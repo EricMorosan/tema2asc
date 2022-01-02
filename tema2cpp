@@ -1,0 +1,66 @@
+#include <iostream>
+
+
+using namespace std;
+
+
+int fixat[100],v[100],n, m, frecv[100];
+void citire()
+{
+    cin>>n>>m;
+    for (int i=1; i<=3*n; ++i)
+        cin>>fixat[i];
+}
+
+void afisare(int p)
+{
+    for(int i=1; i<=p; ++i)
+        cout<<v[i]<<" ";
+    cout<<endl;
+}
+int valid(int p)
+{
+    for(int i=1; i<p; ++i)
+        for (int j=i+1; j<= min(p,i+m); ++j)
+            if (v[i] == v[j])
+                return 0;
+    for (int i=1; i<=n; ++i)
+        frecv[i] = 0;
+    for (int i=1; i<=p; ++i)
+    {
+
+        ++frecv[v[i]];
+        if (frecv[v[i]]>3)
+            return 0;
+        if (fixat[i]>0 && fixat[i]!=v[i])
+            return 0;
+    }
+    return 1;
+}
+void bacck(int p)
+{
+        for (int i=1; i<=n; ++i)
+        {
+            v[p]=i;
+            if(valid(p)==1)
+                if (p == 3*n)
+                {
+                    afisare(p);
+                    exit(0);
+                }
+                else
+                    bacck(p+1);
+        }
+
+
+
+}
+
+int main()
+{
+    citire();
+    bacck(1);
+    cout<<-1;
+    return 0;
+
+}
