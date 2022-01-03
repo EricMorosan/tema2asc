@@ -12,10 +12,7 @@ aux2: .long 0
 aux3: .long 0
 aux4: .long 0
 aux5: .long 0
-pula: .long 0
-pula2: .long 0
-pula3: .long 0
-pula4: .long 0
+
 zero: .long 0
 unu: .long 1
 fixat: .space 400
